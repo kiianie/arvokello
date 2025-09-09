@@ -1,0 +1,15 @@
+const Map<String, String> finnishPack = {
+  'welcome': 'Tervetuloa Arvokelloon!',
+  'askNumberLabel': 'Kuinka monta arvoa haluat listata?',
+  'continueButton': 'Jatka',
+  'askWordsTitle': 'Anna arvot',
+  'askValueLabel': 'Anna {index}. arvo',
+  'amountLabel': 'Arvojen määrä: {amount}',
+  'compareLabel': 'Valitse vaihtoehdoista.',
+  'compareTitle': 'Vertailut valmiit!',
+  'results': 'Tulokset',
+  'backButton': 'Takaisin',
+  'value1': '{value}',
+  'value2': '{value}',
+  'resultHeader': 'Vertailun tulokset',
+};

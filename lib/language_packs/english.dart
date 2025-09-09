@@ -1,0 +1,15 @@
+const Map<String, String> englishPack = {
+  'welcome': 'Welcome to ValueWheel!',
+  'askNumberLabel': 'How many values would you like to list?',
+  'continueButton': 'Continue',
+  'askWordsTitle': 'Enter Values',
+  'askValueLabel': 'Give {index}. value',
+  'amountLabel': 'The amount of values: {amount}',
+  'compareLabel': 'Choose which one is more valuable.',
+  'compareTitle': 'Comparison done!',
+  'results': 'Results',
+  'backButton': 'Return',
+  'value1': 'Value 1: {value}',
+  'value2': 'Value 2: {value}',
+  'resultHeader': 'Comparison Results',
+};
