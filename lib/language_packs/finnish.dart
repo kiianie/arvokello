@@ -1,6 +1,7 @@
 const Map<String, String> finnishPack = {
   'appTitle': 'Arvokello',
   'welcome': 'Tervetuloa Arvokelloon!',
+  'featureSelectTitle': 'Valitse, mitä haluat tehdä',
   'askNumberLabel': 'Kuinka monta arvoa haluat listata?',
   'continueButton': 'Jatka',
   'askWordsTitle': 'Anna arvot',
@@ -13,4 +14,6 @@ const Map<String, String> finnishPack = {
   'value1': '{value}',
   'value2': '{value}',
   'resultHeader': 'Vertailun tulokset',
+  'feature1': 'Arvokello',
+  'feature2': 'Reissurinki',
 };

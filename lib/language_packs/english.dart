@@ -1,6 +1,7 @@
 const Map<String, String> englishPack = {
   'appTitle': 'ValueWheel',
   'welcome': 'Welcome to ValueWheel!',
+  'featureSelectTitle': 'Choose what you want to do',
   'askNumberLabel': 'How many values would you like to list?',
   'continueButton': 'Continue',
   'askWordsTitle': 'Enter Values',
@@ -13,4 +14,6 @@ const Map<String, String> englishPack = {
   'value1': '{value}',
   'value2': '{value}',
   'resultHeader': 'Comparison Results',
+  'feature1': 'ValueWheel',
+  'feature2': 'TravelCircle',
 };

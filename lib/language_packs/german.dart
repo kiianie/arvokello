@@ -1,6 +1,7 @@
 const Map<String, String> germanPack = {
   'appTitle': 'Wert',
   'welcome': 'Willkommen bei Wert!',
+  'featureSelectTitle': 'Wählen Sie, was Sie tun möchten',
   'askNumberLabel': 'Wie viele Werte möchten Sie auflisten?',
   'continueButton': 'Weiter',
   'askWordsTitle': 'Werte eingeben',
@@ -13,4 +14,6 @@ const Map<String, String> germanPack = {
   'value1': '{value}',
   'value2': '{value}',
   'resultHeader': 'Vergleichsergebnisse',
+  'feature1': 'Arvokello',
+  'feature2': 'Reissurinki',
 };

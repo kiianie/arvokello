@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:arvokello/features/valuewheel_single/valuewheel_screens/compare_words.dart';
 import 'package:arvokello/language_packs/languages.dart';
+import '/models/arvokello.dart';
 
 class AskWords extends StatefulWidget {
   final int? amount;
@@ -95,12 +96,19 @@ class _AskWordsState extends State<AskWords> {
                   backgroundColor: const Color.fromARGB(255, 192, 201, 216),
                 ),
                 onPressed: () {
-                  List<String> values = controllers.map((c) => c.text).toList();
+                  final words = controllers
+                      .asMap()
+                      .entries
+                      .map((e) => ArvokelloWord(id: e.key, text: e.value.text))
+                      .toList();
+
+                  final game = ArvokelloGame(words: words);
+
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => CompareWords(
-                        list: values,
+                        game: game,
                         selectedLanguage: widget.selectedLanguage,
                       ),
                     ),

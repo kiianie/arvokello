@@ -15,7 +15,9 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends State<MainApp> {
+
   AppLanguage _selectedLanguage = AppLanguage.finnish;
+  String? _selectedFeature;
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +43,10 @@ class _MainAppState extends State<MainApp> {
                     value: AppLanguage.english,
                     child: Text('English'),
                   ),
+                  DropdownMenuItem(
+                    value: AppLanguage.german,
+                    child: Text('Deutsch'),
+                  ),
                 ],
                 onChanged: (AppLanguage? value) {
                   if (value != null) {
@@ -53,9 +59,88 @@ class _MainAppState extends State<MainApp> {
             ),
           ],
         ),
-        body: Center(
-          child: ArvokelloApp(selectedLanguage: _selectedLanguage),
-        ),
+        body: _selectedFeature == null
+            ? Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      labels['featureSelectTitle'] ?? '',
+                      style: const TextStyle(fontSize: 24, fontWeight: FontWeight.normal),
+                    ),
+                    const SizedBox(height: 40),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        TextButton.icon( // valuewheel
+                          onPressed: () {
+                            setState(() {
+                              _selectedFeature = 'feature1';
+                            });},
+                          icon: Column(
+                            children: [
+                              Icon(Icons.scale, color: Color.fromARGB(255, 68, 92, 135),),
+                              Text(labels['feature1'] ?? ''),
+                            ],
+                          ),
+                          style: IconButton.styleFrom(
+                            iconSize: 80,
+                            foregroundColor: const Color.fromARGB(255, 102, 114, 135),
+                            backgroundColor: const Color.fromARGB(255, 229, 231, 236),
+                            padding: const EdgeInsets.all(20),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(11),
+                            ),
+                          ),
+                          label: Text(''),
+                        ),
+                        TextButton.icon( // second feature
+                          onPressed: () {
+                            setState(() {
+                              _selectedFeature = 'feature2';
+                            });},
+                          icon: Column(
+                            children: [
+                              Icon(Icons.travel_explore, color: Color.fromARGB(255, 68, 92, 135),),
+                              Text(labels['feature2'] ?? ''),
+                            ],
+                          ),
+                          style: IconButton.styleFrom(
+                            iconSize: 80,
+                            foregroundColor: const Color.fromARGB(255, 102, 114, 135),
+                            backgroundColor: const Color.fromARGB(255, 229, 231, 236),
+                            padding: const EdgeInsets.all(20),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(11),
+                            ),
+                          ),
+                          label: Text(''),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+                  ],
+                ),
+              )
+            : _selectedFeature == 'feature1'
+                ? ArvokelloApp(selectedLanguage: _selectedLanguage)
+                : Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(labels['otherFeatureComing'] ?? 'Other feature coming soon!', style: const TextStyle(fontSize: 22)),
+                        const SizedBox(height: 30),
+                        ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              _selectedFeature = null;
+                            });
+                          },
+                          child: Text(labels['backButton'] ?? 'Back'),
+                        ),
+                      ],
+                    ),
+                  ),
       ),
     );
   }
