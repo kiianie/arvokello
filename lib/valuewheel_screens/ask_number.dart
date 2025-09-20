@@ -1,4 +1,4 @@
-import 'package:arvokello/screens/ask_words.dart';
+import 'package:arvokello/valuewheel_screens/ask_words.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:arvokello/language_packs/languages.dart';

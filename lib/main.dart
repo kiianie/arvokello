@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'screens/ask_number.dart';
+import 'valuewheel_screens/ask_number.dart';
 import 'language_packs/languages.dart';
 
 void main() {
@@ -19,10 +19,11 @@ class _MainAppState extends State<MainApp> {
 
   @override
   Widget build(BuildContext context) {
+    final labels = languagePacks[_selectedLanguage]!;
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Arvokello'),
+          title: Text(labels['appTitle'] ?? ''),
           actions: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),

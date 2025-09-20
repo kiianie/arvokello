@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:arvokello/screens/compare_words.dart';
+import 'package:arvokello/valuewheel_screens/compare_words.dart';
 import 'package:arvokello/language_packs/languages.dart';
 
 class AskWords extends StatefulWidget {

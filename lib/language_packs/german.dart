@@ -1,0 +1,16 @@
+const Map<String, String> germanPack = {
+  'appTitle': 'Wert',
+  'welcome': 'Willkommen bei Wert!',
+  'askNumberLabel': 'Wie viele Werte möchten Sie auflisten?',
+  'continueButton': 'Weiter',
+  'askWordsTitle': 'Werte eingeben',
+  'askValueLabel': 'Geben Sie den {index}. Wert ein',
+  'amountLabel': 'Die Anzahl der Werte: {amount}',
+  'compareLabel': 'Wählen Sie, welcher Wert wertvoller ist.',
+  'compareTitle': 'Vergleich abgeschlossen!',
+  'results': 'Ergebnisse',
+  'backButton': 'Zurück',
+  'value1': '{value}',
+  'value2': '{value}',
+  'resultHeader': 'Vergleichsergebnisse',
+};

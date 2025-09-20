@@ -1,4 +1,5 @@
 const Map<String, String> finnishPack = {
+  'appTitle': 'Arvokello',
   'welcome': 'Tervetuloa Arvokelloon!',
   'askNumberLabel': 'Kuinka monta arvoa haluat listata?',
   'continueButton': 'Jatka',
