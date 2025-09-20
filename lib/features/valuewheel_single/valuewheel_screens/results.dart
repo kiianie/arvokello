@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:arvokello/language_packs/languages.dart';
-import '/models/arvokello.dart';
+import '../../../models/arvokello.dart';
 
 class Results extends StatelessWidget {
   final List<ArvokelloWord> results;
