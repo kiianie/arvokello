@@ -84,15 +84,21 @@ class Player {
   }
 }
 
-// Säiliö usealle yksinpelille
-class ArvokelloMultiGame {
-  final List<ArvokelloWord> baseWords; // Pääkäyttäjän antamat sanat
-  final List<ArvokelloGame> playerGames; // Jokaiselle pelaajalle oma yksinpeli
+// Luokka moninpelin yksittäiselle sessiolle
+class ArvokelloSession {
+  final String sessionId;
+  final List<ArvokelloWord> baseWords;
+  final List<Player> results = [];
 
-  ArvokelloMultiGame({
+  ArvokelloSession({
+    required this.sessionId,
     required this.baseWords,
-    required this.playerGames,
+    List<Player>?  results,
   });
+
+  void addResult(Player result) {
+    results.add(result);
+  }
 
   // Koosta kaikkien tulokset
   List<ArvokelloWord> aggregateResults() {
@@ -100,11 +106,10 @@ class ArvokelloMultiGame {
       for (var word in baseWords) word.id: ArvokelloWord(id: word.id, text: word.text)
     };
 
-    for (var game in playerGames) {
-      final sorted = game.getSortedResults();
-      for (int i = 0; i < sorted.length; i++) {
-        final word = sorted[i];
-        aggregated[word.id]!.incrementScore(sorted.length - i);
+    for (var player in results) {
+      final scores = player.getScores();
+      for (var entry in scores.entries) {
+        aggregated[entry.key]!.incrementScore(entry.value);
       }
     }
 
@@ -112,4 +117,5 @@ class ArvokelloMultiGame {
     sorted.sort((a, b) => b.score.compareTo(a.score));
     return sorted;
   }
+
 }
