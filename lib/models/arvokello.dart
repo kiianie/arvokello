@@ -1,5 +1,3 @@
-// features/valuewheel_single/src/arvokello_single_model.dart
-
 class ArvokelloWord {
   final int id;        // Uniikki tunniste sanalle
   final String text;   // Sanojen teksti
@@ -62,6 +60,7 @@ class ArvokelloGame {
   }
 }
 
+// Luokka pelaajaa varten moninpelissä
 class Player {
   final String id;
   final String name;
@@ -85,30 +84,30 @@ class Player {
   }
 }
 
+// Säiliö usealle yksinpelille
 class ArvokelloMultiGame {
-  final List<ArvokelloWord> baseWords;  // Pääkäyttäjän määrittelemät arvot
-  final List<Player> players;
+  final List<ArvokelloWord> baseWords; // Pääkäyttäjän antamat sanat
+  final List<ArvokelloGame> playerGames; // Jokaiselle pelaajalle oma yksinpeli
 
   ArvokelloMultiGame({
     required this.baseWords,
-    required this.players,
+    required this.playerGames,
   });
 
-  // Yhdistä kaikkien pelaajien pisteet yhteen
+  // Koosta kaikkien tulokset
   List<ArvokelloWord> aggregateResults() {
-    // kopio pohjasanat
     final aggregated = {
       for (var word in baseWords) word.id: ArvokelloWord(id: word.id, text: word.text)
     };
 
-    for (var player in players) {
-      final scores = player.getScores();
-      for (var entry in scores.entries) {
-        aggregated[entry.key]!.incrementScore(entry.value);
+    for (var game in playerGames) {
+      final sorted = game.getSortedResults();
+      for (int i = 0; i < sorted.length; i++) {
+        final word = sorted[i];
+        aggregated[word.id]!.incrementScore(sorted.length - i);
       }
     }
 
-    // Palautetaan järjestyksessä
     final sorted = aggregated.values.toList();
     sorted.sort((a, b) => b.score.compareTo(a.score));
     return sorted;
