@@ -61,3 +61,56 @@ class ArvokelloGame {
     return sorted;
   }
 }
+
+class Player {
+  final String id;
+  final String name;
+  final List<ArvokelloWord> rankings;
+
+  Player({
+    required this.id,
+    required this.name,
+    required this.rankings,
+  });
+
+  // Palauta pisteet (esim. sijoituksen perusteella annettavat painot)
+  Map<int, int> getScores() {
+    final scores = <int, int>{};
+    for (var i = 0; i < rankings.length; i++) {
+      final word = rankings[i];
+      // esim. ensimmäinen saa isoimmat pisteet
+      scores[word.id] = rankings.length - i;
+    }
+    return scores;
+  }
+}
+
+class ArvokelloMultiGame {
+  final List<ArvokelloWord> baseWords;  // Pääkäyttäjän määrittelemät arvot
+  final List<Player> players;
+
+  ArvokelloMultiGame({
+    required this.baseWords,
+    required this.players,
+  });
+
+  // Yhdistä kaikkien pelaajien pisteet yhteen
+  List<ArvokelloWord> aggregateResults() {
+    // kopio pohjasanat
+    final aggregated = {
+      for (var word in baseWords) word.id: ArvokelloWord(id: word.id, text: word.text)
+    };
+
+    for (var player in players) {
+      final scores = player.getScores();
+      for (var entry in scores.entries) {
+        aggregated[entry.key]!.incrementScore(entry.value);
+      }
+    }
+
+    // Palautetaan järjestyksessä
+    final sorted = aggregated.values.toList();
+    sorted.sort((a, b) => b.score.compareTo(a.score));
+    return sorted;
+  }
+}
