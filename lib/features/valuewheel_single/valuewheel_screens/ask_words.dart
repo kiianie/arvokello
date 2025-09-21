@@ -89,11 +89,12 @@ class _AskWordsState extends State<AskWords> {
               width: double.infinity,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  backgroundColor: const Color.fromARGB(255, 192, 201, 216),
+                  backgroundColor: const Color.fromARGB(255, 229, 231, 236),
+                  foregroundColor: const Color.fromARGB(255, 95, 106, 125),
                 ),
                 onPressed: () {
                   final words = controllers

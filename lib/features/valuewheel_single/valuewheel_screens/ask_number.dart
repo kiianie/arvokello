@@ -143,11 +143,12 @@ class _ArvokelloAppState extends State<ArvokelloApp> {
                           width: double.infinity,
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              padding: const EdgeInsets.symmetric(vertical: 16),
+                              padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(12),
                               ),
-                              backgroundColor: const Color.fromARGB(255, 192, 201, 216),
+                              backgroundColor: const Color.fromARGB(255, 229, 231, 236),
+                              foregroundColor: const Color.fromARGB(255, 95, 106, 125),
                             ),
                             onPressed: () {
                               int? amount = int.tryParse(controller.text);
@@ -171,12 +172,20 @@ class _ArvokelloAppState extends State<ArvokelloApp> {
                         ),
                         const SizedBox(height: 20),
                         ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            backgroundColor: const Color.fromARGB(255, 229, 231, 236),
+                            foregroundColor: const Color.fromARGB(255, 95, 106, 125),
+                          ),
                           onPressed: () {
                             setState(() {
                               _selectedMode = null;
                             });
                           },
-                          child: Text(labels['backButton'] ?? 'Back'),
+                          child: Text(labels['backButton'] ?? ''),
                         ),
                       ],
                     )
@@ -187,12 +196,20 @@ class _ArvokelloAppState extends State<ArvokelloApp> {
                           Text(labels['groupModeComing'] ?? 'Group mode coming soon!', style: const TextStyle(fontSize: 22)),
                           const SizedBox(height: 30),
                           ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              backgroundColor: const Color.fromARGB(255, 229, 231, 236),
+                              foregroundColor: const Color.fromARGB(255, 95, 106, 125),
+                            ),
                             onPressed: () {
                               setState(() {
                                 _selectedMode = null;
                               });
                             },
-                            child: Text(labels['backButton'] ?? 'Back'),
+                            child: Text(labels['backButton'] ?? ''),
                           ),
                         ],
                       ),
