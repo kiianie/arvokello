@@ -13,7 +13,7 @@ class ArvokelloAppMulti extends StatefulWidget {
 }
 
 class _ArvokelloAppMultiState extends State<ArvokelloAppMulti> {
-  String? _selectedMode;
+  //String? _selectedMode;
 
   @override
   Widget build(BuildContext context) {

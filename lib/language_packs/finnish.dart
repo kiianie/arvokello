@@ -19,4 +19,5 @@ const Map<String, String> finnishPack = {
   'resultHeader': 'Vertailun tulokset',
   'feature1': 'Arvokello',
   'feature2': 'Reissurinki',
+  'otherComing' :'Uusi ominaisuus tulossa pian!',
 };

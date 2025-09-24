@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:arvokello/language_packs/languages.dart';
 import 'results.dart';
-import '../../../models/arvokello.dart';
+import '../../models/arvokello.dart';
 
 class CompareWords extends StatefulWidget {
   final ArvokelloGame game;

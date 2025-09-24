@@ -1,4 +1,4 @@
-import 'package:arvokello/features/valuewheel_single/valuewheel_screens/ask_words.dart';
+import 'package:arvokello/UI/valuewheel_single/ask_words.dart';
 import 'package:arvokello/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

@@ -19,4 +19,5 @@ const Map<String, String> germanPack = {
   'resultHeader': 'Vergleichsergebnisse',
   'feature1': 'Arvokello',
   'feature2': 'Reissurinki',
+  'otherComing' :'Andere Funktion bald verfügbar!',
 };

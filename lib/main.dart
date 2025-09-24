@@ -1,7 +1,5 @@
-
-import 'package:arvokello/features/valuewheel_single/valuewheel_screens/ask_number.dart';
 import 'package:flutter/material.dart';
-import 'features/valuewheel_single/mode_page.dart';
+import 'UI/valuewheel_single/mode_page.dart';
 import 'language_packs/languages.dart';
 
 void main() {
@@ -129,13 +127,14 @@ class _MainAppState extends State<MainApp> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(labels['otherFeatureComing'] ?? 'Other feature coming soon!', style: const TextStyle(fontSize: 22)),
+                        Text(labels['otherComing'] ?? '', style: const TextStyle(fontSize: 22)),
                         const SizedBox(height: 30),
                         ElevatedButton(
                           onPressed: () {
-                            setState(() {
-                              _selectedFeature = null; // TODO: fix
-                            });
+                            Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(builder: (context) => MainApp()),
+                              (route) => false,
+                            );
                           },
                           child: Text(labels['backButton'] ?? 'Back'),
                         ),

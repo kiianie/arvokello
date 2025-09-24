@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:arvokello/language_packs/languages.dart';
-import 'package:arvokello/features/valuewheel_multi/generate_game.dart';
-import 'package:arvokello/features/valuewheel_single/valuewheel_screens/ask_number.dart'; // Import for ArvokelloApp
+import 'package:arvokello/UI/valuewheel_multi/generate_game.dart';
+import 'package:arvokello/UI/valuewheel_single/single_game.dart'; // Import for ArvokelloApp
 
 class ModeChooser extends StatelessWidget {
   final AppLanguage selectedLanguage;

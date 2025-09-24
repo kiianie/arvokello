@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:arvokello/features/valuewheel_single/valuewheel_screens/compare_words.dart';
+import 'package:arvokello/UI/valuewheel_single/compare_words.dart';
 import 'package:arvokello/language_packs/languages.dart';
-import '../../../models/arvokello.dart';
+import '../../models/arvokello.dart';
 
 class AskWords extends StatefulWidget {
   final int? amount;
