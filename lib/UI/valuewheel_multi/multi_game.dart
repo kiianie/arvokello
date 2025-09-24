@@ -35,8 +35,11 @@ class _ArvokelloAppMultiState extends State<ArvokelloAppMulti> {
                   foregroundColor: const Color.fromARGB(255, 95, 106, 125),
                 ),
                 onPressed: () {
-                  MaterialPageRoute route = MaterialPageRoute(
-                    builder: (context) => MultiGameCreation(selectedLanguage: widget.selectedLanguage),
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MultiGameCreation(selectedLanguage: widget.selectedLanguage),
+                    ),
                   );
                 },
                 child: Text(labels['createButton'] ?? ''),
@@ -81,7 +84,6 @@ class _MultiGameCreationState extends State<MultiGameCreation> {
   @override
   void initState() {
     super.initState();
-    // Luo sessio koodilla
     final sessionId = ArvokelloSession.generateSessionCode(6); 
     session = ArvokelloSession(sessionId: sessionId, baseWords: []);
   }
