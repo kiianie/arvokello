@@ -1,6 +1,7 @@
 
+import 'package:arvokello/features/valuewheel_single/valuewheel_screens/ask_number.dart';
 import 'package:flutter/material.dart';
-import 'features/valuewheel_single/valuewheel_screens/ask_number.dart';
+import 'features/valuewheel_single/mode_page.dart';
 import 'language_packs/languages.dart';
 
 void main() {
@@ -123,7 +124,7 @@ class _MainAppState extends State<MainApp> {
                 ),
               )
             : _selectedFeature == 'feature1'
-                ? ArvokelloApp(selectedLanguage: _selectedLanguage)
+                ? ModeChooser(selectedLanguage: _selectedLanguage)
                 : Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -133,7 +134,7 @@ class _MainAppState extends State<MainApp> {
                         ElevatedButton(
                           onPressed: () {
                             setState(() {
-                              _selectedFeature = null;
+                              _selectedFeature = null; // TODO: fix
                             });
                           },
                           child: Text(labels['backButton'] ?? 'Back'),

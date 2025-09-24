@@ -1,5 +1,5 @@
 //import 'package:arvokello/features/valuewheel_single/valuewheel_screens/ask_words.dart';
-//import 'package:arvokello/main.dart';
+import 'package:arvokello/main.dart';
 import 'package:flutter/material.dart';
 //import 'package:flutter/services.dart';
 import 'package:arvokello/language_packs/languages.dart';
@@ -32,9 +32,10 @@ class _ArvokelloAppMultiState extends State<ArvokelloAppMulti> {
             foregroundColor: const Color.fromARGB(255, 95, 106, 125),
           ),
           onPressed: () {
-            setState(() {
-              _selectedMode = null;
-            });
+            Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (context) => MainApp()),
+              (route) => false,
+            );
           },
           child: Text(labels['backButton'] ?? ''),
         ),

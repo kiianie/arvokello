@@ -1,3 +1,5 @@
+import 'dart:math';
+
 class ArvokelloWord {
   final int id;        // Uniikki tunniste sanalle
   final String text;   // Sanojen teksti
@@ -116,6 +118,12 @@ class ArvokelloSession {
     final sorted = aggregated.values.toList();
     sorted.sort((a, b) => b.score.compareTo(a.score));
     return sorted;
+  }
+
+  String generateSessionCode(int length) {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    final rand = Random();
+    return List.generate(length, (index) => chars[rand.nextInt(chars.length)]).join();
   }
 
 }
