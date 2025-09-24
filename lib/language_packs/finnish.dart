@@ -21,4 +21,9 @@ const Map<String, String> finnishPack = {
   'feature2': 'Reissurinki',
   'otherComing' :'Uusi ominaisuus tulossa pian!',
   'createButton': 'Luo uusi Arvokello',
+  'createSessionTitle': 'Luo',
+  'sessionCode': 'Koodi',
+  'sessionReady': 'Valmis',
+  'shareCode': 'Jaa tämä koodi',
+  'waitingPlayers': 'Odotetaan pelaajia...',
 };

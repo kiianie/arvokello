@@ -96,7 +96,7 @@ class _MultiGameCreationState extends State<MultiGameCreation> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(labels['createSessionTitle'] ?? 'Create Session'),
+        title: Text(labels['createSessionTitle'] ?? ''),
       ),
       body: Padding(
         padding: const EdgeInsets.all(24.0),
@@ -114,7 +114,7 @@ class _MultiGameCreationState extends State<MultiGameCreation> {
               controller: _amountController,
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
-                labelText: labels['howManyWords'] ?? 'Number of values',
+                labelText: labels['askNumberLabel'] ?? '',
                 border: const OutlineInputBorder(),
               ),
             ),
@@ -149,7 +149,7 @@ class _MultiGameCreationState extends State<MultiGameCreation> {
                   );
                 }
               },
-              child: Text(labels['continueButton'] ?? 'Continue'),
+              child: Text(labels['continueButton'] ?? ''),
             ),
           ],
         ),
@@ -170,18 +170,18 @@ class SessionReadyScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(labels['sessionReady'] ?? 'Session Ready'),
+        title: Text(labels['sessionReady'] ?? ''),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("${labels['shareCode'] ?? 'Share this code'}: ${session.sessionId}",
+            Text("${labels['shareCode'] ?? ''}: ${session.sessionId}",
                 style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
 
             const SizedBox(height: 20),
 
-            Text(labels['waitingPlayers'] ?? 'Waiting for players...'),
+            Text(labels['waitingPlayers'] ?? ''),
           ],
         ),
       ),

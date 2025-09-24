@@ -21,4 +21,9 @@ const Map<String, String> englishPack = {
   'feature2': 'TravelCircle',
   'otherComing':'Other feature coming soon!',
   'createButton': 'Create a new ValueWheel',
+  'createSessionTitle': 'Create session',
+  'sessionCode': 'Code',
+  'sessionReady': 'Session Ready',
+  'shareCode': 'Share this code',
+  'waitingPlayers': 'Waiting for players...',
 };
