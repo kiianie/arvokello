@@ -20,4 +20,5 @@ const Map<String, String> finnishPack = {
   'feature1': 'Arvokello',
   'feature2': 'Reissurinki',
   'otherComing' :'Uusi ominaisuus tulossa pian!',
+  'createButton': 'Luo uusi Arvokello',
 };

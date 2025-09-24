@@ -20,4 +20,5 @@ const Map<String, String> germanPack = {
   'feature1': 'Arvokello',
   'feature2': 'Reissurinki',
   'otherComing' :'Andere Funktion bald verfügbar!',
+  'createButton': 'Erstellen Sie ein neues Wert',
 };

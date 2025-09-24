@@ -3,6 +3,8 @@ import 'package:arvokello/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:arvokello/language_packs/languages.dart';
+import 'package:arvokello/UI/valuewheel_single/compare_words.dart';
+import '../../models/arvokello.dart';
 
 class ArvokelloApp extends StatefulWidget {
   final AppLanguage selectedLanguage;
@@ -75,6 +77,18 @@ class _ArvokelloAppState extends State<ArvokelloApp> {
                           builder: (context) => AskWords(
                             amount: amount,
                             selectedLanguage: widget.selectedLanguage,
+                            onWordsSubmitted: (words) {
+                              final game = ArvokelloGame(words: words);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => CompareWords(
+                                    game: game,
+                                    selectedLanguage: widget.selectedLanguage,
+                                  ),
+                                ),
+                              );
+                            },
                           ),
                         ),
                       );

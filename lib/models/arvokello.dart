@@ -120,7 +120,7 @@ class ArvokelloSession {
     return sorted;
   }
 
-  String generateSessionCode(int length) {
+  static String generateSessionCode(int length) {
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     final rand = Random();
     return List.generate(length, (index) => chars[rand.nextInt(chars.length)]).join();

@@ -19,5 +19,6 @@ const Map<String, String> englishPack = {
   'resultHeader': 'Comparison Results',
   'feature1': 'ValueWheel',
   'feature2': 'TravelCircle',
-  'otherComing' :'Other feature coming soon!',
+  'otherComing':'Other feature coming soon!',
+  'createButton': 'Create a new ValueWheel',
 };

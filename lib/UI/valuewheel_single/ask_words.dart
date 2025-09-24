@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:arvokello/UI/valuewheel_single/compare_words.dart';
 import 'package:arvokello/language_packs/languages.dart';
 import '../../models/arvokello.dart';
 
 class AskWords extends StatefulWidget {
   final int? amount;
   final AppLanguage selectedLanguage;
-  const AskWords({super.key, required this.amount, required this.selectedLanguage});
+
+  /// Tämä callback määrittää mitä tapahtuu kun sanat on syötetty
+  final void Function(List<ArvokelloWord> words) onWordsSubmitted;
+
+  const AskWords({
+    super.key,
+    required this.amount,
+    required this.selectedLanguage,
+    required this.onWordsSubmitted,
+  });
 
   @override
   State<AskWords> createState() => _AskWordsState();
@@ -34,11 +42,9 @@ class _AskWordsState extends State<AskWords> {
     final labels = languagePacks[widget.selectedLanguage]!;
 
     return Scaffold(
-      backgroundColor: Colors.grey[100],
       appBar: AppBar(
         title: Text(labels['askWordsTitle'] ?? ''),
         centerTitle: true,
-        elevation: 2,
       ),
       body: Padding(
         padding: const EdgeInsets.all(24.0),
@@ -46,15 +52,10 @@ class _AskWordsState extends State<AskWords> {
           children: [
             Text(
               labels['amountLabel']?.replaceFirst('{amount}', (widget.amount ?? 0).toString()) ?? '',
-              style: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w600,
-              ),
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 20),
-
-            // Word input list
             Expanded(
               child: ListView.separated(
                 itemCount: widget.amount ?? 0,
@@ -62,64 +63,28 @@ class _AskWordsState extends State<AskWords> {
                 itemBuilder: (context, index) {
                   final label = labels['askValueLabel']?.replaceFirst('{index}', (index + 1).toString()) ?? '';
                   return Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    elevation: 3,
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: TextField(
                         controller: controllers[index],
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          labelText: label,
-                          labelStyle: TextStyle(color: Colors.grey[600]),
-                        ),
+                        decoration: InputDecoration(labelText: label),
                       ),
                     ),
                   );
                 },
               ),
             ),
+            ElevatedButton(
+              onPressed: () {
+                final words = controllers
+                    .asMap()
+                    .entries
+                    .map((e) => ArvokelloWord(id: e.key, text: e.value.text))
+                    .toList();
 
-            const SizedBox(height: 20),
-
-            // Continue button
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  backgroundColor: const Color.fromARGB(255, 229, 231, 236),
-                  foregroundColor: const Color.fromARGB(255, 95, 106, 125),
-                ),
-                onPressed: () {
-                  final words = controllers
-                      .asMap()
-                      .entries
-                      .map((e) => ArvokelloWord(id: e.key, text: e.value.text))
-                      .toList();
-
-                  final game = ArvokelloGame(words: words);
-
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => CompareWords(
-                        game: game,
-                        selectedLanguage: widget.selectedLanguage,
-                      ),
-                    ),
-                  );
-                },
-                child: Text(
-                  labels['continueButton'] ?? '',
-                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-              ),
+                widget.onWordsSubmitted(words);
+              },
+              child: Text(labels['continueButton'] ?? 'Continue'),
             ),
           ],
         ),
