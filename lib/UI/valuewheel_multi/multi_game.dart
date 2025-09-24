@@ -1,7 +1,5 @@
-//import 'package:arvokello/features/valuewheel_single/valuewheel_screens/ask_words.dart';
 import 'package:arvokello/main.dart';
 import 'package:flutter/material.dart';
-//import 'package:flutter/services.dart';
 import 'package:arvokello/language_packs/languages.dart';
 
 class ArvokelloAppMulti extends StatefulWidget {
@@ -13,8 +11,6 @@ class ArvokelloAppMulti extends StatefulWidget {
 }
 
 class _ArvokelloAppMultiState extends State<ArvokelloAppMulti> {
-  //String? _selectedMode;
-
   @override
   Widget build(BuildContext context) {
     final labels = languagePacks[widget.selectedLanguage]!;

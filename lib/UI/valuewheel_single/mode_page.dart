@@ -1,7 +1,10 @@
+// Keep in the single game as this needs to be accessible for free mode as well
+
 import 'package:flutter/material.dart';
 import 'package:arvokello/language_packs/languages.dart';
-import 'package:arvokello/UI/valuewheel_multi/generate_game.dart';
-import 'package:arvokello/UI/valuewheel_single/single_game.dart'; // Import for ArvokelloApp
+import 'package:arvokello/UI/valuewheel_multi/multi_game.dart';
+import 'package:arvokello/UI/valuewheel_single/single_game.dart'; 
+import 'package:arvokello/main.dart';
 
 class ModeChooser extends StatelessWidget {
   final AppLanguage selectedLanguage;
@@ -91,7 +94,10 @@ class ModeChooser extends StatelessWidget {
             foregroundColor: const Color.fromARGB(255, 95, 106, 125),
           ),
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (context) => MainApp()),
+              (route) => false,
+            );
           },
           child: Text(labels['backButton'] ?? ''),
         ),

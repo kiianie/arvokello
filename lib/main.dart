@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'UI/valuewheel_single/mode_page.dart';
 import 'language_packs/languages.dart';
+import 'package:arvokello/state_management.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => AppState(),
+      child: const MainApp(),
+    ),
+  );
 }
 
 class MainApp extends StatefulWidget {
@@ -15,12 +22,19 @@ class MainApp extends StatefulWidget {
 
 class _MainAppState extends State<MainApp> {
 
-  AppLanguage _selectedLanguage = AppLanguage.finnish;
   String? _selectedFeature;
 
   @override
   Widget build(BuildContext context) {
-    final labels = languagePacks[_selectedLanguage]!;
+    final appState = Provider.of<AppState>(context);
+    AppLanguage selectedLanguage = appState.getLanguage.isEmpty
+        ? AppLanguage.finnish
+        : AppLanguage.values.firstWhere(
+            (lang) => lang.toString() == appState.getLanguage,
+            orElse: () => AppLanguage.finnish,
+          );
+    final labels = languagePacks[selectedLanguage]!;
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -29,7 +43,7 @@ class _MainAppState extends State<MainApp> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: DropdownButton<AppLanguage>(
-                value: _selectedLanguage,
+                value: selectedLanguage,
                 underline: Container(),
                 icon: const Icon(Icons.language, color: Color.fromARGB(255, 174, 182, 223)),
                 dropdownColor: Colors.white,
@@ -49,9 +63,7 @@ class _MainAppState extends State<MainApp> {
                 ],
                 onChanged: (AppLanguage? value) {
                   if (value != null) {
-                    setState(() {
-                      _selectedLanguage = value;
-                    });
+                    appState.setLanguage(value.toString());
                   }
                 },
               ),
@@ -75,10 +87,11 @@ class _MainAppState extends State<MainApp> {
                           onPressed: () {
                             setState(() {
                               _selectedFeature = 'feature1';
-                            });},
+                            });
+                          },
                           icon: Column(
                             children: [
-                              Icon(Icons.scale, color: Color.fromARGB(255, 68, 92, 135),),
+                              Icon(Icons.scale, color: Color.fromARGB(255, 68, 92, 135)),
                               Text(labels['feature1'] ?? ''),
                             ],
                           ),
@@ -97,7 +110,8 @@ class _MainAppState extends State<MainApp> {
                           onPressed: () {
                             setState(() {
                               _selectedFeature = 'feature2';
-                            });},
+                            });
+                          },
                           icon: Column(
                             children: [
                               Icon(Icons.travel_explore, color: Color.fromARGB(255, 68, 92, 135),),
@@ -122,7 +136,7 @@ class _MainAppState extends State<MainApp> {
                 ),
               )
             : _selectedFeature == 'feature1'
-                ? ModeChooser(selectedLanguage: _selectedLanguage)
+                ? ModeChooser(selectedLanguage: selectedLanguage)
                 : Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
