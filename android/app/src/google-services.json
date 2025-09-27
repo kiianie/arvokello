@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "674606147879",
+    "project_id": "arvokello-7f1d8",
+    "storage_bucket": "arvokello-7f1d8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:674606147879:android:aaed2b1c91e74393106102",
+        "android_client_info": {
+          "package_name": "com.puro.arvokello"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANjqO9D5vpmwSlrrn8SG3yU7xhX_ikMaQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
